@@ -1,17 +1,19 @@
 package com.knoldus.awssmstrackerdemo.records;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class Attributes {
 
     private String recordStatus;
     private String messageId;
-    private String destination;
+    private String destinationMobileNumber;
 
     public Attributes() {}
 
-    public Attributes(@JsonProperty("record_status") String recordStatus, @JsonProperty("message_id") String messageId) {
+    public Attributes(@JsonProperty("record_status") String recordStatus, @JsonProperty("message_id") String messageId, @JsonProperty("destination_phone_number") String destinationMobileNumber) {
         this.recordStatus = recordStatus;
         this.messageId = messageId;
+        this.destinationMobileNumber = destinationMobileNumber;
     }
 
     public String getRecordStatus() {
@@ -20,6 +22,10 @@ public class Attributes {
 
     public String getMessageId() {
         return messageId;
+    }
+
+    public String getDestinationMobileNumber() {
+        return destinationMobileNumber;
     }
 
     @Override

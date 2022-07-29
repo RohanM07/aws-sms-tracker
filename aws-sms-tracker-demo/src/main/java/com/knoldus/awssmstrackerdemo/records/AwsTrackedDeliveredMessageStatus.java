@@ -1,7 +1,8 @@
 package com.knoldus.awssmstrackerdemo.records;
-
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 
 import java.io.IOException;
 
