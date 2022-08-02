@@ -92,13 +92,16 @@ public class ConsumereventProcess implements ShardRecordProcessor {
         byte[] messageStatus = new byte[record.data().remaining()];
 
         record.data().get(messageStatus);
-        log.info("Message Status checking ", messageStatus.length);
+        log.info("Record Data Processing checking ", record.data().get(messageStatus));
+        log.info("Record Process Data length ", messageStatus.length);
         AwsTrackedDeliveredMessageStatus awsTrackedDeliveredMessageStatus = AwsTrackedDeliveredMessageStatus.mapJsonToBytes(messageStatus);
-        log.info("Event Converted with status ", awsTrackedDeliveredMessageStatus.getAttributes().getRecordStatus());
+        log.info("Object Mapping JSON check ", awsTrackedDeliveredMessageStatus.getAttributes().getRecordStatus());
         Event event = new Event(awsTrackedDeliveredMessageStatus.getAttributes().getRecordStatus(),
                 awsTrackedDeliveredMessageStatus.getAttributes().getMessageId(),
                 awsTrackedDeliveredMessageStatus.getAttributes().getDestinationMobileNumber());
         log.info("Sending event to the mongoDb ",event);
+        log.info("Checking the message status ",event.getRecordStatus());
         eventService.addRecord(event);
+        log.info("Adding the record data in MongoDb through the service ",event.hashCode());
     }
 }
